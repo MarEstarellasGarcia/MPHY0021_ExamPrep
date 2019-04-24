@@ -1,0 +1,13 @@
+- lower: [ 'A', 'antiB', 'C'] 
+  upper: ['antiC', 'antiA']
+  answer: [['antiB'], [], 2]
+  
+- lower: [ 'hola', 'que', 'tal'] 
+  upper: ['antihola', 'antital', 'bien']
+  answer: [['que'], ['bien'],2]
+  
+- lower: [ 'antiMar', 'Mar'] 
+  upper: ['quelio', 'Mar']
+  answer: [['Mar'], ['quelio'],1]
+
+ 

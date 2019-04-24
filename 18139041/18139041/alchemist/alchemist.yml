@@ -1,0 +1,8 @@
+lower:
+    - 'A'
+    - 'antiB'
+    - 'C'
+
+upper: 
+    - 'antiC'
+    - 'antiA'
