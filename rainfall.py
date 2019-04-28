@@ -42,10 +42,12 @@ def read_to_json(path, file):
 # for 1998.
     
 
-def plot_timeseries(json_file, year ='1998' , colour='green' ):
+def plot_timeseries(json_file, year, colour):
     with open(json_file) as rain_json_file:  
         data_rain = json.load(rain_json_file)    
      
+    color='green' 
+    year= '1998'
     
     plt.plot(data_rain[year], color)
     plt.xlabel('Rainfall')
@@ -59,10 +61,12 @@ def plot_timeseries(json_file, year ='1998' , colour='green' ):
 # formatted plot in png format showing the data from 1988 to 2000 (inclusive).
  
     
-def mean_anual_rainfall(jason_file, first_year= 1988, last_year= 2000):
+def mean_anual_rainfall(jason_file, first_year, last_year):
     with open(json_file) as rain_json_file:  
         data_rain = json.load(rain_json_file) 
     
+    first_year= 1988
+    last_year= 2000
     lista = np.arange(first_year, last_year,1)
     
     mean_rain=[]
@@ -86,29 +90,23 @@ def mean_anual_rainfall(jason_file, first_year= 1988, last_year= 2000):
 #• Function 2 should use a list comprehension [5]
 #• In the docstring for one of these functions, evaluate the pros and cons for
 #these two approaches to the same task.
-    
-def return_correct_value(value):
-    return value * 1.2 ** np.sqrt(2)
    
 
-def correct_rainfall_numbers(jason_file):
-    with open(json_file) as rain_json_file:  
-        data_rain = json.load(rain_json_file) 
-        
-    first_year= 2005
-    last_year= 2011
-    lista = np.arange(first_year, last_year,1)
+# From: https://github.com/prawnrao/rsd-exam-prep/blob/master/MyAnswers/q1/exam-question1.py
     
-    correct_numbers_list=  np.empty(((last_year-first_year), np.size(data_rain[np.str(first_year)])))
-
-    for year in lista: 
-        incorrect_numbers= np.array(data_rain[np.str(year)])
-        correct_numbers= incorrect_numbers * 1.2 ** np.sqrt(2)
-        correct_numbers_list = np.stack(correct_numbers, axis=0)
-        #data_rain[np.str(year)] = correct_numbers
-      
-    return list(correct_numbers)
+def correct_value(value):
+    return value * (1.2**np.sqrt(2.0))
 
 
+def correct_annual_values_1(annual_rainfall):
+
+    corrected_rainfall = []
+    for daily_rainfall in annual_rainfall:
+        corrected_rainfall.append(correct_value(daily_rainfall))
+
+    return corrected_rainfall
 
 
+def correct_annual_values_2(annual_rainfall):
+
+    return [correct_value(value) for value in annual_rainfall]
